@@ -1,0 +1,610 @@
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --sidebar-color: #FFF;
+    --primary-color: rgb(81, 221, 93);
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient( rgb(133, 136, 133), Black);  
+    transition: var(--tran-05);
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+.sidebar.close{
+    width: 88px;
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+.home{
+    position: absolute;
+    margin-top: 25px;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.home a{
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    padding: 5px 25px;
+	text-decoration: none;
+	border: 2px solid rgb(81, 221, 93);
+	border-radius: 75px;
+	background-color: rgb(81,221,93);
+	float: right;
+	margin-right: 50px;
+}
+
+.home a:hover {
+	background-color: green;
+}
+
+.notif {
+	color: rgb(81, 221, 93);
+}
+.img-div {
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color: var(--text-color);
+}
+.logo {
+	height: 200px;
+	margin-top: 180px;	
+}
+
+.sidebar.close ~ .home{
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+body.dark .home .text{
+    color: var(--text-color);
+}
+.wrapper
+		{
+           
+            position: absolute;
+            top: 0;
+            top: 0;
+            left: 21vh;
+            height: 100vh;
+            width: calc(100% - 250px);
+			min-height: 100vh;
+			padding: 50px 20px;
+			padding-top: 100px;
+			display: flex;
+            background-color: var(--body-color);
+            transition: var(--tran-05);
+		}
+        .profile-card
+		{
+			width: 100%;
+			min-height: 460px;
+			margin: auto;
+			box-shadow: 0px 8px 60px -10px rgb(92, 17, 17);
+			background: #fff;
+			border-radius: 12px;
+			max-width: 700px;
+			position: relative;
+		}
+		
+		.profile-card.active .profile-card__cnt
+		{
+			filter: blur(6px);
+		}
+		
+		.profile-card.active .profile-card-message,
+		.profile-card.active .profile-card__overlay
+		{
+			opacity: 1;
+			pointer-events: auto;
+			transition-delay: .1s;
+		}
+		
+		.profile-card.active .profile-card-form
+		{
+			transform: none;
+			transition-delay: .1s;
+		}
+		
+		.profile-card__img
+		{
+			width: 150px;
+			height: 150px;
+			margin-left: auto;
+			margin-right: auto;
+			transform: translateY(-50%);
+			border-radius: 50%;
+			overflow: hidden;
+			position: relative;
+			z-index: 4;
+			box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107,74,255,0.5);
+		}
+        @media screen and(max-width:576px)
+		{
+			.profile-card__img
+			{
+				width: 120px;
+				height: 120px;
+			}
+		}
+		.profile-card__img img
+		{
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+		
+		.profile-card__cnt
+		{
+			margin-top: -35px;
+			text-align: center;
+			padding: 0 20px;
+			padding-bottom: 40px;
+			transition: all .3s;
+		}
+        .profile-card__name
+		{
+			font-weight: 700;
+			font-size: 24px;
+			color: #6944ff;
+			margin-bottom: 15px;
+		}
+		
+		.profile-card__txt
+		{
+			font-size: 18px;
+			font-weight: 500;
+			color: #324e63;
+			margin-bottom: 15px;
+		}
+		
+		.profile-card__txt strong
+		{
+			font-weight: 700;
+		}
+		
+		.profile-card-loc
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		
+		.profile-card-loc__icon
+		{
+			display: inline-flex;
+			font-size: 27px;
+			margin-right: 10px;
+		}
+		
+		.profile-card-inf
+		{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			margin-top: 35px;
+		}
+		
+		.profile-card-inf__item
+		{
+			padding: 10px 35px;
+			min-width: 150px;
+		}
+		
+		@media screen and (max-width:768px)
+		{
+			.profile-card-inf__item
+			{
+				padding: 10px 20px;
+				min-width: 120px;
+			}
+		}
+		
+		.profile-card-inf__title
+		{
+			font-weight: 700;
+			font-size: 27px;
+			color: rgb(92, 17, 17);
+		}
+		
+		.profile-card-inf__txt
+		{
+			font-weight: 500;
+			margin-top: 7px;
+		
+		}
+		
+	
+		
+		
+		@media screen and (max-width: 768px){
+			.profile-card-social__item
+			{
+				width: 50px;
+				height: 50px;
+				margin: 10px;
+			}
+		}
+		
+		@media screen and (min-width: 768px)
+		{
+			.profile-card-social__item:hover
+			{
+				transform: scale(1.2);
+			}
+		}
+		
+		
+		
+	
+		.profile-card-ctr
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 40px;
+		}
+		
+		@media screen and (max-width: 576px)
+		{
+			.profile-card-ctr
+			{
+				flex-wrap: wrap;
+			}
+		}
+		
+		.profile-card__button {
+  background: none;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 15px 35px;
+  padding: 15px 40px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all .3s;
+}
+		
+		@media screen and (max-width: 768px)
+		{
+			.profile-card__button
+			{
+				min-width: 170px;
+				margin: 15px 25px;
+			}
+		}
+		
+		@media screen and (max-width: 576px)
+		{
+			.profile-card__button
+			{
+				min-height: inherit;
+				margin: 0;
+				margin-bottom: 16px;
+				width: 100%;
+				max-width: 300px;
+			}
+			.profile-card__button:last-child
+			{
+				margin-bottom: 0;
+			}
+		}
+		
+		.profile-card__button:focus
+		{
+			outline: none !important;
+		}
+		
+		@media screen and (min-width:768px)
+		{
+			.profile-card__button:hover
+			{
+				transform: translateY(-5px);
+			}
+		}
+		.profile-card__button:first-child
+		{
+			margin-left: 0;
+		}
+		.profile-card__button:last-child
+		{
+			margin-right: 0;
+		}
+		.profile-card__button.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgb(92, 17, 17);
+}
+.profile-card__button.button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+}
+		
+		.profile-card__button.button--orange
+		{
+			background: linear-gradient(45deg, #d5135a, #f05924);
+			box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+		}
+		.profile-card__button.button--orange:hover
+		{
+			box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+		}
